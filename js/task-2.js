@@ -25,15 +25,11 @@ const images = [
   }
 ];
 
-images.forEach(img =>{
- const pictures = document.createElement("img");
- pictures.src = img.url;
- pictures.alt = img.alt;
- const all = document.querySelector(".gallery");
- all.append(pictures);
-  pictures.classList.add('gallery-item')
- console.log(pictures);
- });
- 
+const gallery = document.querySelector(".gallery");
 
+const picturesHTML = images.map((img) => {
+  return `<img class = "gallery-item" src="${img.url}" alt="${img.alt}"">`;
+}).join('');
+
+gallery.innerHTML = picturesHTML;
 
