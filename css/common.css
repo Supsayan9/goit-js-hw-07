@@ -32,5 +32,6 @@ body {
   overflow: hidden;
   border-radius: 15px;
 }
-
-
+.red{
+  background-color: red;
+}
