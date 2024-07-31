@@ -22,7 +22,7 @@ const onBtnCreate = () => {
 
       for (let i = 1; i <= inputCount; i++) {
           step += 10;
-          // Створення нового div
+          
           const div = document.createElement("div");
           div.style.width = `${step}px`;
           div.style.height = `${step}px`;
