@@ -1,7 +1,7 @@
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, '0')}`;
+      .toString(16)
+      .padStart(6, '0')}`;
 }
 
 const input = document.querySelector("input");
@@ -14,20 +14,34 @@ let step = 20;
 const onBtnCreate = () => {
   const inputCount = parseInt(input.value);
   if (inputCount <= input.max) {
-    divBox.innerHTML = "";  
-    for (let i = 1; i <= inputCount; i++) {
-      step += 10;
-      const div = `<div style="width: ${step}px; height: ${step}px; background-color: ${getRandomHexColor()}; margin: 5px;"></div>`;
-      divBox.insertAdjacentHTML("beforeend", div);
-    }
-    input.value = "";
-    step = 20;
+
+      divBox.innerHTML = "";
+
+
+      const fragment = document.createDocumentFragment();
+
+      for (let i = 1; i <= inputCount; i++) {
+          step += 10;
+          // Створення нового div
+          const div = document.createElement("div");
+          div.style.width = `${step}px`;
+          div.style.height = `${step}px`;
+          div.style.backgroundColor = getRandomHexColor();
+          fragment.appendChild(div);
+      }
+
+      
+      divBox.appendChild(fragment);
+
+      
+      input.value = "";
+      step = 20;
   }
 };
 
 const onBtnDestroy = () => {
   step = 20;
-  divBox.innerHTML = ""; 
+  divBox.innerHTML = "";
 };
 
 buttonCreate.addEventListener("click", onBtnCreate);
